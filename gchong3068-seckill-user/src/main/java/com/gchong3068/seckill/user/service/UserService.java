@@ -1,0 +1,24 @@
+package com.gchong3068.seckill.user.service;
+
+
+import com.gchong3068.seckill.common.utils.Response;
+import com.gchong3068.seckill.user.model.vo.RegisterUserReqVO;
+
+/**
+ * @author: gchong3068
+ * @date: 2026年04月11日22:22
+ * @Version: 1.0
+ * @Description: 用户业务
+ */
+public interface UserService {
+
+
+    /*
+     * 用户注册
+     * @author gchong3068
+     * @date 2026/4/11 22:22
+     * @param registerUserReqVO
+     * @return com.gchong3068.seckill.common.utils.Response<?>
+     */
+    Response<?> register(RegisterUserReqVO registerUserReqVO);
+}

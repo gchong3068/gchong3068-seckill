@@ -1,0 +1,273 @@
+2026-04-11 22:06:49.728 INFO  [main] c.g.s.a.SeckillApplication : Starting SeckillApplication using Java 21.0.10 with PID 52820 (D:\code\gchong3068-seckill\gchong3068-seckill\gchong3068-seckill-app\target\classes started by gchon in D:\code\gchong3068-seckill\gchong3068-seckill)
+2026-04-11 22:06:49.729 INFO  [main] c.g.s.a.SeckillApplication : The following 1 profile is active: "dev"
+2026-04-11 22:06:50.175 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2026-04-11 22:06:50.182 INFO  [main] o.a.c.h.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:06:50.183 INFO  [main] o.a.c.c.StandardService : Starting service [Tomcat]
+2026-04-11 22:06:50.183 INFO  [main] o.a.c.c.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.49]
+2026-04-11 22:06:50.204 INFO  [main] o.a.c.c.C.[.[.[/] : Initializing Spring embedded WebApplicationContext
+2026-04-11 22:06:50.204 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 453 ms
+2026-04-11 22:06:50.474 INFO  [main] o.a.c.h.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:06:50.482 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11 22:06:50.486 INFO  [main] c.g.s.a.SeckillApplication : Started SeckillApplication in 1.072 seconds (process running for 1.616)
+2026-04-11 22:07:34.790 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11 22:07:34.790 INFO  [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-11 22:07:34.792 INFO  [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet : Completed initialization in 2 ms
+2026-04-11 22:08:16.261 ERROR [http-nio-8080-exec-3] c.g.s.c.e.GlobalExceptionHandler : /test/systemException request error, 
+java.lang.ArithmeticException: / by zero
+	at com.gchong3068.seckill.user.controller.TestController.testSystemException(TestController.java:48) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.49.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.49.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2026-04-11 22:09:37.043 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.t.GracefulShutdown : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11 22:09:37.048 INFO  [tomcat-shutdown] o.s.b.w.e.t.GracefulShutdown : Graceful shutdown complete
+2026-04-11 22:09:39.292 INFO  [main] c.g.s.a.SeckillApplication : Starting SeckillApplication using Java 21.0.10 with PID 39236 (D:\code\gchong3068-seckill\gchong3068-seckill\gchong3068-seckill-app\target\classes started by gchon in D:\code\gchong3068-seckill\gchong3068-seckill)
+2026-04-11 22:09:39.293 INFO  [main] c.g.s.a.SeckillApplication : The following 1 profile is active: "dev"
+2026-04-11 22:09:39.792 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2026-04-11 22:09:39.798 INFO  [main] o.a.c.h.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:09:39.799 INFO  [main] o.a.c.c.StandardService : Starting service [Tomcat]
+2026-04-11 22:09:39.799 INFO  [main] o.a.c.c.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.49]
+2026-04-11 22:09:39.818 INFO  [main] o.a.c.c.C.[.[.[/] : Initializing Spring embedded WebApplicationContext
+2026-04-11 22:09:39.818 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 504 ms
+2026-04-11 22:09:40.137 INFO  [main] o.a.c.h.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:09:40.148 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11 22:09:40.152 INFO  [main] c.g.s.a.SeckillApplication : Started SeckillApplication in 1.125 seconds (process running for 1.512)
+2026-04-11 22:09:47.453 INFO  [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11 22:09:47.453 INFO  [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-11 22:09:47.453 INFO  [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet : Completed initialization in 0 ms
+2026-04-11 22:09:47.480 INFO  [http-nio-8080-exec-5] c.g.s.c.a.ApiOperationLogAspect : ====== 请求开始: [测试公共返参], 入参: "gchong3068", 请求类: TestController, 请求方法: testResponse =================================== 
+2026-04-11 22:09:47.492 INFO  [http-nio-8080-exec-5] c.g.s.c.a.ApiOperationLogAspect : ====== 请求结束: [测试公共返参], 耗时: 7ms, 出参: {"success":true,"message":null,"errorCode":null,"data":"Hello,gchong3068!"} =================================== 
+2026-04-11 22:09:57.286 INFO  [http-nio-8080-exec-3] c.g.s.c.a.ApiOperationLogAspect : ====== 请求开始: [测试系统异常捕获], 入参: , 请求类: TestController, 请求方法: testSystemException =================================== 
+2026-04-11 22:09:57.287 ERROR [http-nio-8080-exec-3] c.g.s.c.e.GlobalExceptionHandler : /test/systemException request error, 
+java.lang.ArithmeticException: / by zero
+	at com.gchong3068.seckill.user.controller.TestController.testSystemException(TestController.java:48) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:89) ~[spring-aop-6.2.14.jar:6.2.14]
+	at com.gchong3068.seckill.common.aspect.ApiOperationLogAspect.doAround(ApiOperationLogAspect.java:59) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:649) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:631) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:71) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:173) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.14.jar:6.2.14]
+	at com.gchong3068.seckill.user.controller.TestController$$SpringCGLIB$$0.testSystemException(<generated>) ~[classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.49.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.49.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2026-04-11 22:12:23.638 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.t.GracefulShutdown : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11 22:12:23.643 INFO  [tomcat-shutdown] o.s.b.w.e.t.GracefulShutdown : Graceful shutdown complete
+2026-04-11 22:12:26.476 INFO  [main] c.g.s.a.SeckillApplication : Starting SeckillApplication using Java 21.0.10 with PID 36884 (D:\code\gchong3068-seckill\gchong3068-seckill\gchong3068-seckill-app\target\classes started by gchon in D:\code\gchong3068-seckill\gchong3068-seckill)
+2026-04-11 22:12:26.476 INFO  [main] c.g.s.a.SeckillApplication : The following 1 profile is active: "dev"
+2026-04-11 22:12:26.973 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2026-04-11 22:12:26.979 INFO  [main] o.a.c.h.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:12:26.980 INFO  [main] o.a.c.c.StandardService : Starting service [Tomcat]
+2026-04-11 22:12:26.980 INFO  [main] o.a.c.c.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.49]
+2026-04-11 22:12:27.002 INFO  [main] o.a.c.c.C.[.[.[/] : Initializing Spring embedded WebApplicationContext
+2026-04-11 22:12:27.002 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 504 ms
+2026-04-11 22:12:27.316 INFO  [main] o.a.c.h.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:12:27.324 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11 22:12:27.328 INFO  [main] c.g.s.a.SeckillApplication : Started SeckillApplication in 1.118 seconds (process running for 1.51)
+2026-04-11 22:12:45.472 INFO  [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11 22:12:45.472 INFO  [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-11 22:12:45.472 INFO  [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet : Completed initialization in 0 ms
+2026-04-11 22:30:34.351 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.t.GracefulShutdown : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11 22:30:34.355 INFO  [tomcat-shutdown] o.s.b.w.e.t.GracefulShutdown : Graceful shutdown complete
+2026-04-11 22:30:39.067 INFO  [background-preinit] o.h.v.i.u.Version : HV000001: Hibernate Validator 8.0.3.Final
+2026-04-11 22:30:39.091 INFO  [main] c.g.s.a.SeckillApplication : Starting SeckillApplication using Java 21.0.10 with PID 52312 (D:\code\gchong3068-seckill\gchong3068-seckill\gchong3068-seckill-app\target\classes started by gchon in D:\code\gchong3068-seckill\gchong3068-seckill)
+2026-04-11 22:30:39.092 INFO  [main] c.g.s.a.SeckillApplication : The following 1 profile is active: "dev"
+2026-04-11 22:30:39.656 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2026-04-11 22:30:39.663 INFO  [main] o.a.c.h.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:30:39.663 INFO  [main] o.a.c.c.StandardService : Starting service [Tomcat]
+2026-04-11 22:30:39.663 INFO  [main] o.a.c.c.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.49]
+2026-04-11 22:30:39.683 INFO  [main] o.a.c.c.C.[.[.[/] : Initializing Spring embedded WebApplicationContext
+2026-04-11 22:30:39.683 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 571 ms
+2026-04-11 22:30:40.017 INFO  [main] o.a.c.h.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:30:40.026 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11 22:30:40.030 INFO  [main] c.g.s.a.SeckillApplication : Started SeckillApplication in 1.236 seconds (process running for 1.664)
+2026-04-11 22:30:52.460 INFO  [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11 22:30:52.460 INFO  [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-11 22:30:52.461 INFO  [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet : Completed initialization in 1 ms
+2026-04-11 22:30:52.484 ERROR [http-nio-8080-exec-2] c.g.s.c.e.GlobalExceptionHandler : /user/register request error, 
+org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'registerUserReqVO' for method parameter type RegisterUserReqVO is not present
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:220) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:196) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:125) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:227) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:181) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.49.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.49.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at cn.dev33.satoken.filter.SaFirewallCheckFilterForJakartaServlet.doFilter(SaFirewallCheckFilterForJakartaServlet.java:69) ~[sa-token-spring-boot-webmvc-v3v4-common-1.45.0.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at cn.dev33.satoken.filter.SaTokenCorsFilterForJakartaServlet.doFilter(SaTokenCorsFilterForJakartaServlet.java:52) ~[sa-token-spring-boot-webmvc-v3v4-common-1.45.0.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at cn.dev33.satoken.filter.SaTokenContextFilterForJakartaServlet.doFilter(SaTokenContextFilterForJakartaServlet.java:40) ~[sa-token-spring-boot-webmvc-v3v4-common-1.45.0.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+2026-04-11 22:34:56.786 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.t.GracefulShutdown : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11 22:34:56.791 INFO  [tomcat-shutdown] o.s.b.w.e.t.GracefulShutdown : Graceful shutdown complete
+2026-04-11 22:34:59.158 INFO  [background-preinit] o.h.v.i.u.Version : HV000001: Hibernate Validator 8.0.3.Final
+2026-04-11 22:34:59.182 INFO  [main] c.g.s.a.SeckillApplication : Starting SeckillApplication using Java 21.0.10 with PID 39956 (D:\code\gchong3068-seckill\gchong3068-seckill\gchong3068-seckill-app\target\classes started by gchon in D:\code\gchong3068-seckill\gchong3068-seckill)
+2026-04-11 22:34:59.183 INFO  [main] c.g.s.a.SeckillApplication : The following 1 profile is active: "dev"
+2026-04-11 22:34:59.724 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2026-04-11 22:34:59.730 INFO  [main] o.a.c.h.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:34:59.731 INFO  [main] o.a.c.c.StandardService : Starting service [Tomcat]
+2026-04-11 22:34:59.731 INFO  [main] o.a.c.c.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.49]
+2026-04-11 22:34:59.752 INFO  [main] o.a.c.c.C.[.[.[/] : Initializing Spring embedded WebApplicationContext
+2026-04-11 22:34:59.752 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 547 ms
+2026-04-11 22:35:00.100 INFO  [main] o.a.c.h.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2026-04-11 22:35:00.109 INFO  [main] o.s.b.w.e.t.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2026-04-11 22:35:00.113 INFO  [main] c.g.s.a.SeckillApplication : Started SeckillApplication in 1.206 seconds (process running for 1.629)
+2026-04-11 22:35:03.674 INFO  [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11 22:35:03.674 INFO  [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-11 22:35:03.675 INFO  [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet : Completed initialization in 1 ms
+2026-04-11 22:35:03.755 INFO  [http-nio-8080-exec-2] c.g.s.c.a.ApiOperationLogAspect : ====== 请求开始: [用户注册], 入参: {"mobile":"18019911108","password":"123456","verifyCode":"123456"}, 请求类: UserController, 请求方法: register =================================== 
+2026-04-11 22:35:03.762 INFO  [http-nio-8080-exec-2] c.z.h.HikariDataSource : SeckillHikariPool - Starting...
+2026-04-11 22:35:03.863 INFO  [http-nio-8080-exec-2] c.z.h.p.HikariPool : SeckillHikariPool - Added connection com.mysql.cj.jdbc.ConnectionImpl@30087c1
+2026-04-11 22:35:03.864 INFO  [http-nio-8080-exec-2] c.z.h.HikariDataSource : SeckillHikariPool - Start completed.
+2026-04-11 22:35:03.986 INFO  [http-nio-8080-exec-2] c.g.s.u.s.i.UserServiceImpl : ==> 用户注册成功, mobile: 18019911108
+2026-04-11 22:35:03.987 INFO  [http-nio-8080-exec-2] c.g.s.c.a.ApiOperationLogAspect : ====== 请求结束: [用户注册], 耗时: 238ms, 出参: {"success":true,"message":null,"errorCode":null,"data":null} =================================== 
+2026-04-11 22:36:03.206 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.t.GracefulShutdown : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-11 22:36:03.212 INFO  [tomcat-shutdown] o.s.b.w.e.t.GracefulShutdown : Graceful shutdown complete
+2026-04-11 22:36:03.214 INFO  [SpringApplicationShutdownHook] c.z.h.HikariDataSource : SeckillHikariPool - Shutdown initiated...
+2026-04-11 22:36:03.217 INFO  [SpringApplicationShutdownHook] c.z.h.HikariDataSource : SeckillHikariPool - Shutdown completed.

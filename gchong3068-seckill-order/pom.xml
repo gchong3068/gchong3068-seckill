@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.gchong3068</groupId>
+        <artifactId>gchong3068-seckill</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <packaging>jar</packaging>
+
+    <artifactId>gchong3068-seckill-order</artifactId>
+    <name>gchong3068-seckill-order</name>
+    <description>订单模块，放置秒杀下单、订单列表、订单详情、取消订单、模拟支付等接口</description>
+
+
+    <dependencies>
+        <!-- 公共模块-->
+        <dependency>
+            <groupId>com.gchong3068</groupId>
+            <artifactId>gchong3068-seckill-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.gchong3068</groupId>
+        <artifactId>gchong3068-seckill</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <packaging>jar</packaging>
+
+    <artifactId>gchong3068-seckill-app</artifactId>
+    <name>gchong3068-seckill-app</name>
+    <description>启动模块，负责整合所有业务模块</description>
+
+
+    <dependencies>
+
+        <!-- 用户模块-->
+        <dependency>
+            <groupId>com.gchong3068</groupId>
+            <artifactId>gchong3068-seckill-user</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--秒杀模块-->
+        <dependency>
+            <groupId>com.gchong3068</groupId>
+            <artifactId>gchong3068-seckill-goods</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--订单模块-->
+        <dependency>
+            <groupId>com.gchong3068</groupId>
+            <artifactId>gchong3068-seckill-order</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Spring Boot Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <!-- 排除默认的 Logback 日志框架 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+
+
+
+
+
+</project>
