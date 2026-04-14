@@ -2,6 +2,8 @@ package com.gchong3068.seckill.user.service;
 
 
 import com.gchong3068.seckill.common.utils.Response;
+import com.gchong3068.seckill.user.model.vo.LoginUserReqVO;
+import com.gchong3068.seckill.user.model.vo.LoginUserRspVO;
 import com.gchong3068.seckill.user.model.vo.RegisterUserReqVO;
 
 /**
@@ -21,4 +23,13 @@ public interface UserService {
      * @return com.gchong3068.seckill.common.utils.Response<?>
      */
     Response<?> register(RegisterUserReqVO registerUserReqVO);
+
+    /*
+     * 用户登录
+     * @author gchong3068
+     * @date 2026/4/14 21:59
+     * @param loginUserReqVO
+     * @return com.gchong3068.seckill.common.utils.Response<com.gchong3068.seckill.user.model.vo.LoginUserRspVO>
+     */
+    Response<LoginUserRspVO> login(LoginUserReqVO loginUserReqVO);
 }

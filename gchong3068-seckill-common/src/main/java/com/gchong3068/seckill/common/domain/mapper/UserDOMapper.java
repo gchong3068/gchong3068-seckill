@@ -24,4 +24,15 @@ public interface UserDOMapper {
      * @return java.lang.Long
      */
     Long selectIdByMobile(String mobile);
+
+
+    /*
+     * 根据手机号查询用户信息
+     * @author gchong3068
+     * @date 2026/4/14 21:57
+     * @param mobile
+     * @return com.gchong3068.seckill.common.domain.dataobject.UserDO
+     */
+    UserDO selectByMobile(String mobile);
+
 }
