@@ -1,6 +1,7 @@
 package com.gchong3068.seckill.common.exception;
 
 
+import cn.dev33.satoken.exception.NotLoginException;
 import com.gchong3068.seckill.common.enums.ResponseCodeEnum;
 import com.gchong3068.seckill.common.utils.Response;
 import jakarta.servlet.http.HttpServletRequest;
@@ -66,6 +67,17 @@ public class GlobalExceptionHandler {
         log.warn("{} request error, errorCode: {}, errorMessage: {}", request.getRequestURI(), errorCode, errorMessage);
 
         return Response.fail(errorCode, errorMessage);
+    }
+
+    /**
+     * 捕获 SaToken 未登录异常
+     * @param request
+     * @param e
+     * @return
+     */
+    public Response<Object> handleNotLoginException(HttpServletRequest request, NotLoginException e){
+        log.warn("{} request fail, 未登录异常: {}", request.getRequestURI(), e.getMessage());
+        return Response.fail(ResponseCodeEnum.UNAUTHORIZED);
     }
 
     /**
