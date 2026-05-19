@@ -11,16 +11,30 @@ import com.gchong3068.seckill.common.exception.BizException;
 import com.gchong3068.seckill.common.utils.Response;
 import com.gchong3068.seckill.user.enums.LoginTypeEnum;
 import com.gchong3068.seckill.user.enums.UserStatusEnum;
+import com.gchong3068.seckill.user.enums.VerifyCodeTypeEnum;
 import com.gchong3068.seckill.user.model.vo.LoginUserReqVO;
 import com.gchong3068.seckill.user.model.vo.LoginUserRspVO;
 import com.gchong3068.seckill.user.model.vo.RegisterUserReqVO;
+import com.gchong3068.seckill.user.model.vo.SendVerifyCodeReqVO;
 import com.gchong3068.seckill.user.service.UserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.redis.core.RedisOperations;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SessionCallback;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: gchong3068
@@ -35,6 +49,35 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserDOMapper userDOMapper;
+
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
+
+    @Resource(name = "bizExecutor")
+    private Executor bizExecutor;
+
+
+    // Redis 中验证码的 Key 前缀
+    private static final String VERIFY_CODE_KEY_PREFIX = "verify_code:";
+    // Redis 中发送频率限制的 Key 前缀
+    private static final String VERIFY_CODE_LIMIT_KEY_PREFIX = "verify_code_limit:";
+    // 验证码过期时间（分钟）
+    private static final Long VERIFY_CODE_EXPIRE_MINUTES = 5L;
+    // 发送频率限制时间（秒）
+    private static final Long VERIFY_CODE_LIMIT_SECONDS = 60L;
+
+    /*
+    验证码校验 Lua 脚本
+     */
+    private final DefaultRedisScript<Long> checkAndDeleteVerifyCodeScript;
+
+    public UserServiceImpl() {
+        checkAndDeleteVerifyCodeScript = new DefaultRedisScript<>();
+        //从classpath 的 lua目录下加载脚本文件
+        checkAndDeleteVerifyCodeScript.setLocation(new ClassPathResource("lua/check_and_delete_verify_code.lua"));
+
+        checkAndDeleteVerifyCodeScript.setResultType(Long.class);
+    }
 
 
     /*
@@ -52,10 +95,8 @@ public class UserServiceImpl implements UserService {
 
 
         // 1. 校验验证码
-        // TODO: 验证码先写死 123456，后续开发验证码发送接口，再重构这里
-        if (!"123456".equals(verifyCode)) {
-            throw new BizException(ResponseCodeEnum.USER_VERIFY_CODE_ERROR);
-        }
+        checkVerifyCode(verifyCode, mobile, VerifyCodeTypeEnum.REGISTER.getPurpose());
+
 
         // 2. 校验手机号是否已注册
         Long existUserId = userDOMapper.selectIdByMobile(mobile);
@@ -83,7 +124,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    /*
+    /**
      * 用户登录
      * @author gchong3068
      * @date 2026/4/14 22:00
@@ -94,6 +135,7 @@ public class UserServiceImpl implements UserService {
     public Response<LoginUserRspVO> login(LoginUserReqVO loginUserReqVO) {
         String mobile = loginUserReqVO.getMobile();
         Integer type = loginUserReqVO.getType();
+
 
         //1.根据手机号查询用户
         UserDO userDO = userDOMapper.selectByMobile(mobile);
@@ -109,7 +151,7 @@ public class UserServiceImpl implements UserService {
             checkPassword(loginUserReqVO.getPassword(), userDO.getPassword());
         } else {
             // 验证码登录：校验验证码是否正确
-            checkVerifyCode(loginUserReqVO.getVerifyCode());
+            checkVerifyCode(loginUserReqVO.getVerifyCode(), mobile, VerifyCodeTypeEnum.LOGIN.getPurpose());
         }
 
         // 4. 校验用户状态（是否被禁用）
@@ -140,7 +182,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    /*
+    /**
      * 生成随机昵称
      * @author gchong3068
      * @date 2026/4/11 22:25
@@ -176,20 +218,117 @@ public class UserServiceImpl implements UserService {
      *
      * @param verifyCode 验证码
      */
-    private void checkVerifyCode(String verifyCode) {
+    private void checkVerifyCode(String verifyCode, String mobile, String purpose) {
         // 验证码不能为空
         if (StrUtil.isBlank(verifyCode)) {
             throw new BizException(ResponseCodeEnum.USER_VERIFY_CODE_ERROR);
         }
 
-        // TODO: 验证码先写死 123456，后续开发验证码发送接口，再重构这里
-        if (!"123456".equals(verifyCode)) {
+
+        //构建 Redis Key
+        String redisKey = VERIFY_CODE_KEY_PREFIX + purpose + ":" + mobile;
+
+        Long result = redisTemplate.execute(checkAndDeleteVerifyCodeScript,
+                Collections.singletonList(redisKey),
+                verifyCode);
+
+
+
+        // 对比验证码
+        if (result == null || result == 0) {
             throw new BizException(ResponseCodeEnum.USER_VERIFY_CODE_ERROR);
         }
     }
 
+    // Redis 中每日发送次数限制的 Key 前缀
+    private static final String VERIFY_CODE_DAILY_LIMIT_KEY_PREFIX = "verify_code_daily:";
+    // 每日发送次数上限
+    private static final Integer VERIFY_CODE_DAILY_LIMIT = 10;
+
+
+    /*
+     * 发送验证码
+     *
+     * @param sendVerifyCodeReqVO
+     * @return
+     */
+    @Override
+    public Response<?> sendVerifyCode(SendVerifyCodeReqVO sendVerifyCodeReqVO) {
+
+        String mobile = sendVerifyCodeReqVO.getMobile();
+        Integer type = sendVerifyCodeReqVO.getType();
+
+        // 判断验证码类型是否合法
+        VerifyCodeTypeEnum verifyCodeType = VerifyCodeTypeEnum.valueOf(type);
+        if (Objects.isNull(verifyCodeType)) {
+            throw new BizException(ResponseCodeEnum.VERIFY_CODE_TYPE_ERROR);
+        }
+
+        // 发送频率限制：检查是否在 60 秒内重复发送
+        String limitKey = VERIFY_CODE_LIMIT_KEY_PREFIX + verifyCodeType.getPurpose() + ":" + mobile;
+
+        if (redisTemplate.hasKey(limitKey)) {
+            throw new BizException(ResponseCodeEnum.VERIFY_CODE_SEND_TOO_FREQUENT);
+        }
+
+
+        // 每日发送次数限制：同一手机号、同一场景，每天最多发送 10 条
+        String dailyLimitKey = VERIFY_CODE_DAILY_LIMIT_KEY_PREFIX + verifyCodeType.getPurpose()
+                + ":" + mobile + ":" + LocalDate.now();
+
+        // 发送次数 +1
+        Long dailyCount = redisTemplate.opsForValue().increment(dailyLimitKey);
+
+
+        // 首次设置缓存时，计算到当天结束的剩余秒数，作为 Key 的 TTL 过期时间
+        if (Objects.nonNull(dailyCount) && dailyCount == 1) {
+            // 计算从当前时间，到第二天凌晨零点之间还剩下多少秒
+            long secondsUntilMidnight = Duration.between(
+                    LocalDateTime.now(),
+                    LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.MIDNIGHT)
+            ).getSeconds();
+
+            // 设置过期时间
+            redisTemplate.expire(dailyLimitKey, secondsUntilMidnight, TimeUnit.SECONDS);
+        }
+
+        // 如果已经超过 10 条，抛出业务异常
+        if (Objects.nonNull(dailyCount) && dailyCount > VERIFY_CODE_DAILY_LIMIT) {
+            throw new BizException(ResponseCodeEnum.VERIFY_CODE_DAILY_LIMIT_EXCEEDED);
+        }
+
+        //生成6位随机数字验证码
+        String verifyCode = RandomUtil.randomNumbers(6);
+
+
+        String redisKey = VERIFY_CODE_KEY_PREFIX + verifyCodeType.getPurpose() + ":" + mobile;
+        redisTemplate.executePipelined(new SessionCallback<Void>() {
+            @Override
+            public Void execute(RedisOperations operations) {
+                // 先写频率限制 Key（60 秒 TTL）
+                operations.opsForValue().set(limitKey, "1", VERIFY_CODE_LIMIT_SECONDS, TimeUnit.SECONDS);
+                // 再写验证码 Key（5 分钟 TTL）
+                operations.opsForValue().set(redisKey, verifyCode, VERIFY_CODE_EXPIRE_MINUTES, TimeUnit.MINUTES);
+                return null;
+            }
+        });
+
+        //异步发送验证码
+        bizExecutor.execute(()->sendSms(mobile,verifyCode)) ;
+        return Response.success();
+    }
 
 
 
+    private void sendSms(String mobile, String verifyCode) {
 
+        try{
+            // TODO: 调用短信服务商 API 发送验证码
+
+            // 开发阶段通过日志打印验证码，方便调试
+            log.info("==> 验证码发送成功, mobile: {}, verifyCode: {}", mobile, verifyCode);
+        }catch (Exception e){
+            log.error("==> 验证码发送失败, mobile: {}, verifyCode: {}", mobile, verifyCode, e);
+        }
+    }
 }

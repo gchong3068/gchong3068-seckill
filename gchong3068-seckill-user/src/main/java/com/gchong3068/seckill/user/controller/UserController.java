@@ -6,6 +6,7 @@ import com.gchong3068.seckill.common.utils.Response;
 import com.gchong3068.seckill.user.model.vo.LoginUserReqVO;
 import com.gchong3068.seckill.user.model.vo.LoginUserRspVO;
 import com.gchong3068.seckill.user.model.vo.RegisterUserReqVO;
+import com.gchong3068.seckill.user.model.vo.SendVerifyCodeReqVO;
 import com.gchong3068.seckill.user.service.UserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +29,7 @@ public class UserController {
     private UserService userService;
 
 
-    /*
+    /**
      * 用户注册
      * @author gchong3068
      * @date 2026/4/11 22:28
@@ -43,7 +44,7 @@ public class UserController {
 
 
 
-    /*
+    /**
      * 用户登录
      * @author gchong3068
      * @date 2026/4/14 22:04
@@ -57,5 +58,13 @@ public class UserController {
     }
 
 
+    /**
+     * 发送验证码
+     */
+    @PostMapping("/code/send")
+    @ApiOperationLog(description = "发送验证码")
+    public Response<?> sendVerifyCode(@Validated @RequestBody SendVerifyCodeReqVO sendVerifyCodeReqVO) {
+        return userService.sendVerifyCode(sendVerifyCodeReqVO);
+    }
 
 }

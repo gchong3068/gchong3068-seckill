@@ -5,6 +5,7 @@ import com.gchong3068.seckill.common.utils.Response;
 import com.gchong3068.seckill.user.model.vo.LoginUserReqVO;
 import com.gchong3068.seckill.user.model.vo.LoginUserRspVO;
 import com.gchong3068.seckill.user.model.vo.RegisterUserReqVO;
+import com.gchong3068.seckill.user.model.vo.SendVerifyCodeReqVO;
 
 /**
  * @author: gchong3068
@@ -32,4 +33,11 @@ public interface UserService {
      * @return com.gchong3068.seckill.common.utils.Response<com.gchong3068.seckill.user.model.vo.LoginUserRspVO>
      */
     Response<LoginUserRspVO> login(LoginUserReqVO loginUserReqVO);
+
+    /**
+     * 发送验证码
+     * @param sendVerifyCodeReqVO
+     * @return
+     */
+    Response<?> sendVerifyCode(SendVerifyCodeReqVO sendVerifyCodeReqVO);
 }
