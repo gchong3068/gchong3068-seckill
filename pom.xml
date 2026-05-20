@@ -3,10 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.5.8</version>
-    <relativePath/> <!-- lookup parent from repository -->
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>3.5.8</version>
+      <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
   <groupId>com.gchong3068</groupId>
@@ -22,101 +22,107 @@
 
   <!-- 子模块管理 -->
   <modules>
-    <module>gchong3068-seckill-common</module>
-    <module>gchong3068-seckill-user</module>
-    <module>gchong3068-seckill-goods</module>
-    <module>gchong3068-seckill-order</module>
-    <module>gchong3068-seckill-app</module>
+      <module>gchong3068-seckill-common</module>
+      <module>gchong3068-seckill-user</module>
+      <module>gchong3068-seckill-goods</module>
+      <module>gchong3068-seckill-order</module>
+      <module>gchong3068-seckill-app</module>
   </modules>
 
   <!-- 版本号统一管理 -->
   <properties>
-    <!-- 项目版本号 -->
-    <revision>0.0.1-SNAPSHOT</revision>
-    <!-- JDK 版本 -->
-    <java.version>21</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <!-- 项目编码 -->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-    <!-- MyBatis 版本 -->
-    <mybatis-spring-boot.version>3.0.5</mybatis-spring-boot.version>
-    <mybatis-generator-maven-plugin.version>1.3.5</mybatis-generator-maven-plugin.version>
-    <disruptor.version>3.4.4</disruptor.version>
-    <!-- SaToken 版本 -->
-    <sa-token.version>1.45.0</sa-token.version>
-    <!-- Hutool 版本 -->
-    <hutool.version>5.8.38</hutool.version>
+      <!-- 项目版本号 -->
+      <revision>0.0.1-SNAPSHOT</revision>
+      <!-- JDK 版本 -->
+      <maven.compiler.source>${java.version}</maven.compiler.source>
+      <maven.compiler.target>${java.version}</maven.compiler.target>
+      <!-- 项目编码 -->
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <!-- MyBatis 版本 -->
+      <mybatis-spring-boot.version>3.0.5</mybatis-spring-boot.version>
+      <mybatis-generator-maven-plugin.version>1.3.5</mybatis-generator-maven-plugin.version>
+      <disruptor.version>3.4.4</disruptor.version>
+      <!-- SaToken 版本 -->
+      <sa-token.version>1.45.0</sa-token.version>
+      <!-- Hutool 版本 -->
+      <hutool.version>5.8.38</hutool.version>
+      <!-- 行为验证码版本 -->
+      <tianai-captcha.version>1.5.5</tianai-captcha.version>
   </properties>
 
   <!-- 统一依赖管理 -->
   <dependencyManagement>
-    <dependencies>
-      <!-- 公共模块-->
-      <dependency>
-        <groupId>com.gchong3068</groupId>
-        <artifactId>gchong3068-seckill-common</artifactId>
-        <version>${revision}</version>
-      </dependency>
+      <dependencies>
+          <!-- 公共模块-->
+          <dependency>
+            <groupId>com.gchong3068</groupId>
+            <artifactId>gchong3068-seckill-common</artifactId>
+            <version>${revision}</version>
+          </dependency>
 
-      <!-- 用户模块-->
-      <dependency>
-        <groupId>com.gchong3068</groupId>
-        <artifactId>gchong3068-seckill-user</artifactId>
-        <version>${revision}</version>
-      </dependency>
+          <!-- 用户模块-->
+          <dependency>
+            <groupId>com.gchong3068</groupId>
+            <artifactId>gchong3068-seckill-user</artifactId>
+            <version>${revision}</version>
+          </dependency>
 
-      <!--商品模块-->
-      <dependency>
-        <groupId>com.gchong3068</groupId>
-        <artifactId>gchong3068-seckill-goods</artifactId>
-        <version>${revision}</version>
-      </dependency>
+          <!--商品模块-->
+          <dependency>
+            <groupId>com.gchong3068</groupId>
+            <artifactId>gchong3068-seckill-goods</artifactId>
+            <version>${revision}</version>
+          </dependency>
 
-      <!--订单模块-->
-      <dependency>
-        <groupId>com.gchong3068</groupId>
-        <artifactId>gchong3068-seckill-order</artifactId>
-        <version>${revision}</version>
-      </dependency>
+          <!--订单模块-->
+          <dependency>
+            <groupId>com.gchong3068</groupId>
+            <artifactId>gchong3068-seckill-order</artifactId>
+            <version>${revision}</version>
+          </dependency>
 
-      <!-- MyBatis Spring Boot Starter -->
-      <dependency>
-        <groupId>org.mybatis.spring.boot</groupId>
-        <artifactId>mybatis-spring-boot-starter</artifactId>
-        <version>${mybatis-spring-boot.version}</version>
-      </dependency>
+          <!-- MyBatis Spring Boot Starter -->
+          <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-spring-boot.version}</version>
+          </dependency>
 
-      <!-- Disruptor 高性能队列（Log4j2 异步日志需要） -->
-      <dependency>
-        <groupId>com.lmax</groupId>
-        <artifactId>disruptor</artifactId>
-        <version>${disruptor.version}</version>
-      </dependency>
+          <!-- Disruptor 高性能队列（Log4j2 异步日志需要） -->
+          <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${disruptor.version}</version>
+          </dependency>
 
-      <!-- SaToken 权限认证框架（适配 Spring Boot 3） -->
-      <dependency>
-        <groupId>cn.dev33</groupId>
-        <artifactId>sa-token-spring-boot3-starter</artifactId>
-        <version>${sa-token.version}</version>
-      </dependency>
-
-        <!-- Sa-Token 整合 RedisTemplate -->
-        <dependency>
+          <!-- SaToken 权限认证框架（适配 Spring Boot 3） -->
+          <dependency>
             <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-redis-template</artifactId>
+            <artifactId>sa-token-spring-boot3-starter</artifactId>
             <version>${sa-token.version}</version>
-        </dependency>
+          </dependency>
 
-      <!-- Hutool 工具类库 -->
-      <dependency>
-        <groupId>cn.hutool</groupId>
-        <artifactId>hutool-all</artifactId>
-        <version>${hutool.version}</version>
-      </dependency>
+          <!-- Sa-Token 整合 RedisTemplate -->
+          <dependency>
+              <groupId>cn.dev33</groupId>
+              <artifactId>sa-token-redis-template</artifactId>
+              <version>${sa-token.version}</version>
+          </dependency>
 
-    </dependencies>
+          <!-- Hutool 工具类库 -->
+          <dependency>
+              <groupId>cn.hutool</groupId>
+              <artifactId>hutool-all</artifactId>
+              <version>${hutool.version}</version>
+           </dependency>
+          <!-- 行为验证码 -->
+          <dependency>
+              <groupId>cloud.tianai.captcha</groupId>
+              <artifactId>tianai-captcha-springboot-starter</artifactId>
+              <version>${tianai-captcha.version}</version>
+          </dependency>
+
+      </dependencies>
   </dependencyManagement>
 
   <build>

@@ -29,4 +29,7 @@ public class SendVerifyCodeReqVO {
 
     @NotNull(message = "验证码类型不能为空")
     private Integer type;
+
+    @NotBlank(message = "行为验证码ID不能为空")
+    private String captchaId;
 }
