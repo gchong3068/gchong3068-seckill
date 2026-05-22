@@ -1,7 +1,7 @@
 spring:
   # 本地开发环境 MySQL 数据源配置
   datasource:
-    url: jdbc:mysql://localhost:3308/gchong3068_seckill?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://www.wyzzdn.top:33652/gchong3068_seckill?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
     # 数据库用户名
     username: root
     # 数据库密码（改成你自己的密码）
