@@ -63,13 +63,19 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
-        <table tableName="t_goods_img" domainObjectName="GoodsImgDO"
+        <!--<table tableName="t_goods_img" domainObjectName="GoodsImgDO"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false"/>
         <table tableName="t_goods_detail" domainObjectName="GoodsDetailDO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>-->
+        <table tableName="t_seckill_order" domainObjectName="SeckillOrderDO"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"

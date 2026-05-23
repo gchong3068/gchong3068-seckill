@@ -20,7 +20,7 @@
 
         <!-- 数据库链接 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3308/gchong3068_seckill"
+                        connectionURL="jdbc:mysql://www.wyzzdn.top:33652/gchong3068_seckill"
                         userId="root"
                         password="306895">
             <!-- 解决多个重名的表生成表结构不一致问题 -->
@@ -45,11 +45,36 @@
                              targetProject="src/main/java"/>
 
         <!-- 需要生成的表-实体类 -->
-        <table tableName="t_user" domainObjectName="UserDO"
+        <!--<table tableName="t_goods" domainObjectName="GoodsDO"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false"/>
+        <table tableName="t_seckill_activity" domainObjectName="SeckillActivityDO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+        <table tableName="t_seckill_goods" domainObjectName="SeckillGoodsDO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>-->
+        <table tableName="t_goods_img" domainObjectName="GoodsImgDO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+        <table tableName="t_goods_detail" domainObjectName="GoodsDetailDO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
     </context>
 </generatorConfiguration>
