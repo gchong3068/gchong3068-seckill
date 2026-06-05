@@ -45,4 +45,22 @@ public interface SeckillGoodsDOMapper {
      */
     int deductStock(@Param("id") Long id);
 
+
+    /**
+     * 根据活动Id 查询秒杀商品库存
+     * @param activityId
+     * @return
+     */
+    List<SeckillGoodsDO> selectStockByActivityId(@Param("activityId") Long activityId);
+
+
+    /**
+     * 根据活动Id 和商品ID 查询商品库存
+     * @param activityId
+     * @param goodsId
+     * @return
+     */
+    SeckillGoodsDO selectStockByActivityIdAndGoodsId(@Param("activityId") Long activityId,
+                                                     @Param("goodsId") Long goodsId);
+
 }
