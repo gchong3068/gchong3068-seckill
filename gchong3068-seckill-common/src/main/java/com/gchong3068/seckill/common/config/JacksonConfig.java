@@ -14,6 +14,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.YearMonthSerializer;
 import com.gchong3068.seckill.common.constant.DateConstants;
 import com.gchong3068.seckill.common.utils.JsonUtils;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
@@ -32,12 +33,10 @@ import java.util.TimeZone;
 @Configuration
 public class JacksonConfig {
 
-
+    @Bean
     public ObjectMapper objectMapper() {
-
-
+        // 初始化一个 ObjectMapper 对象，用于自定义 Jackson 的行为
         ObjectMapper objectMapper = new ObjectMapper();
-
 
         // 忽略未知属性
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -70,5 +69,4 @@ public class JacksonConfig {
         return objectMapper;
 
     }
-
 }
