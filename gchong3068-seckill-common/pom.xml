@@ -71,10 +71,9 @@
         <!-- Spring Boot Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <!-- 排除默认的 Logback 日志框架 -->
+            <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
+                <!-- 移除默认的 logback -->
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-logging</artifactId>
@@ -141,6 +140,14 @@
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
         </dependency>
+
+
+        <!-- Spring Boot AMQP（整合 RabbitMQ） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
 
     </dependencies>
 
