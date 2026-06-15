@@ -47,12 +47,11 @@ spring:
           min-idle: 5
           # 连接池最大阻塞等待时间（毫秒），-1 表示无限制
           max-wait: 3000
-
   rabbitmq:
     host: 172.16.2.174
     port: 5672
     username: gchong3068
-    password: @Gchong3068
+    password: '@Gchong3068'
     virtual-host: /seckill
     connection-timeout: 15000
 # 自定义线程池配置

@@ -20,30 +20,30 @@ public class LocalCacheConfig {
 
     /**
      * 商品列表本地缓存
-     * @return
+     *
+     * 最大缓存 1000 个活动，每个缓存 30 秒后过期
      */
     @Bean
-    public Cache<String,String> goodsListLocalCache(){
+    public Cache<String, String> goodsListLocalCache() {
         return Caffeine.newBuilder()
                 .maximumSize(1000)
                 .expireAfterWrite(30, TimeUnit.SECONDS)
                 .build();
     }
 
+
     /**
      * 商品详情本地缓存
-     * @return
+     *
+     * 最大缓存 5000 个商品，每个缓存 30 秒后过期
      */
     @Bean
-    public Cache<String,String> goodsDetailLocalCache(){
+    public Cache<String, String> goodsDetailLocalCache() {
         return Caffeine.newBuilder()
                 .maximumSize(5000)
-                .expireAfterWrite(30,TimeUnit.SECONDS)
+                .expireAfterWrite(30, TimeUnit.SECONDS)
                 .build();
-
     }
-
-
 
 
 }

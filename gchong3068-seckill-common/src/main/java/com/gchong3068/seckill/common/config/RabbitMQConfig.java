@@ -5,9 +5,9 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Profile;
 
 /**
@@ -18,7 +18,6 @@ import org.springframework.context.annotation.Profile;
  **/
 @Configuration
 public class RabbitMQConfig  {
-
     /** 测试交换机名称 */
     public static final String TEST_EXCHANGE = "seckill.test.exchange";
 
@@ -27,8 +26,6 @@ public class RabbitMQConfig  {
 
     /** 测试路由键 */
     public static final String TEST_ROUTING_KEY = "seckill.test.routing.key";
-
-
 
     /**
      * 自定义消息转换器，使用 Jackson 序列化（JSON 格式）
@@ -70,7 +67,6 @@ public class RabbitMQConfig  {
                 .to(testExchange)
                 .with(TEST_ROUTING_KEY);
     }
-
 
 
 }
