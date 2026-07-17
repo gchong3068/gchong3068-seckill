@@ -1,6 +1,7 @@
 package com.gchong3068.seckill.common.domain.mapper;
 
 import com.gchong3068.seckill.common.domain.dataobject.SeckillOrderDO;
+import io.lettuce.core.dynamic.annotation.Param;
 
 public interface SeckillOrderDOMapper {
     int deleteByPrimaryKey(Long id);
@@ -16,7 +17,7 @@ public interface SeckillOrderDOMapper {
     int updateByPrimaryKey(SeckillOrderDO record);
 
 
-
-
+    SeckillOrderDO selectByOrderNoAndUserId(@Param("orderNo") String orderNo,
+                                            @Param("userId") Long userId);
 
 }

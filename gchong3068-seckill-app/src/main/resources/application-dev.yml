@@ -54,6 +54,14 @@ spring:
     password: '@Gchong3068'
     virtual-host: /seckill
     connection-timeout: 15000
+    listener: # 消费者监听器配置
+      simple:
+        acknowledge-mode: manual # 开启手动 ACK，消费者处理成功后再确认消息
+        prefetch: 5 # 每个消费者最多持有 5 条未 ack 消息
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
 # 自定义线程池配置
 thread-pool:
   # 核心线程数
