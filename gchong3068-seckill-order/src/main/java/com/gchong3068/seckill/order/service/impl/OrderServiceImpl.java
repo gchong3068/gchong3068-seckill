@@ -24,6 +24,7 @@ import com.gchong3068.seckill.order.model.vo.FindSeckillOrderResultReqVO;
 import com.gchong3068.seckill.order.model.vo.FindSeckillOrderResultRspVO;
 import com.gchong3068.seckill.order.mq.SeckillOrderMessageSender;
 import com.gchong3068.seckill.order.service.OrderService;
+import com.gchong3068.seckill.order.service.SeckillOrderResultNotifyService;
 import com.gchong3068.seckill.order.utils.OrderLockUtils;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -54,26 +55,23 @@ public class OrderServiceImpl implements OrderService {
 
     @Resource
     private SeckillGoodsDOMapper seckillGoodsDOMapper;
-
     @Resource
     private GoodsDOMapper goodsDOMapper;
-
     @Resource
     private SeckillOrderDOMapper seckillOrderDOMapper;
-
     @Resource
     private TransactionTemplate transactionTemplate;
-
     @Resource
     private OrderLockUtils orderLockUtils;
-
     @Resource
     private RabbitTemplate rabbitTemplate;
-
     @Resource
     private SeckillOrderMessageSender seckillOrderMessageSender;
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    @Resource
+    private SeckillOrderResultNotifyService seckillOrderResultNotifyService;
 
 
     /**
@@ -170,6 +168,12 @@ public class OrderServiceImpl implements OrderService {
 
 
 
+    /**
+     * 异步消费秒杀下单信息：扣减库存+创建订单
+     * @author gchong3068
+     * @date 2026/7/25 9:28
+     * @param message
+     */
     @Override
     public void createSeckillOrder(SeckillOrderMqDTO message) {
         Long activityId = message.getActivityId();
@@ -219,10 +223,16 @@ public class OrderServiceImpl implements OrderService {
             //扣库存失败，更新Redis中订单状态为秒杀失败
             if (Objects.isNull(orderDO)){
                 saveOrderStatus(userId, orderNo, OrderStatusEnum.SECKILL_FAILED.getStatus());
+
+                //推送 SSE结果
+                seckillOrderResultNotifyService.notifyOrderResult(userId,buildStatusResult(orderNo, OrderStatusEnum.SECKILL_FAILED));
                 return;
             }
 
             saveOrderStatus(userId, orderNo, OrderStatusEnum.PENDING_PAYMENT.getStatus());
+            // 推送 sse 结果
+            seckillOrderResultNotifyService.notifyOrderResult(userId, buildOrderResult(orderDO));
+
             log.info("==> 异步秒杀下单成功, orderNo: {}", orderNo);
         } catch (DuplicateKeyException e){
             // 幂等兜底：order_no 唯一索引命中，说明是重复投递的消息
@@ -233,6 +243,8 @@ public class OrderServiceImpl implements OrderService {
             SeckillOrderDO existedOrderDO = seckillOrderDOMapper.selectByOrderNoAndUserId(orderNo, userId);
             if (Objects.nonNull(existedOrderDO)) {
                 saveOrderStatus(userId, orderNo, existedOrderDO.getStatus());
+                // 推送 sse 结果
+                seckillOrderResultNotifyService.notifyOrderResult(userId, buildOrderResult(existedOrderDO));
             } else {
                 log.warn("==> 重复消费命中唯一索引，但未查询到当前用户订单, orderNo: {}, userId: {}", orderNo, userId);
             }
@@ -306,5 +318,29 @@ public class OrderServiceImpl implements OrderService {
         String redisKey = RedisKeyConstants.SECKILL_ORDER_STATUS_PREFIX + userId + ":" +orderNo;
         stringRedisTemplate.opsForValue().set(redisKey,String.valueOf(status),
                 RedisKeyConstants.SECKILL_ORDER_STATUS_TTL_MINUTES, TimeUnit.MINUTES);
+    }
+
+
+    private FindSeckillOrderResultRspVO buildOrderResult(SeckillOrderDO orderDO){
+
+        return FindSeckillOrderResultRspVO.builder()
+                .orderId(orderDO.getId())
+                .orderNo(orderDO.getOrderNo())
+                .status(orderDO.getStatus())
+                .statusDesc(OrderStatusEnum.getDescriptionByStatus(orderDO.getStatus()))
+                .goodsId(orderDO.getGoodsId())
+                .goodsName(orderDO.getGoodsName())
+                .goodsImg(orderDO.getGoodsImg())
+                .seckillPrice(orderDO.getSeckillPrice())
+                .build();
+
+    }
+
+    private FindSeckillOrderResultRspVO buildStatusResult(String orderNo, OrderStatusEnum status) {
+        return FindSeckillOrderResultRspVO.builder()
+                .orderNo(orderNo)
+                .status(status.getStatus())
+                .statusDesc(status.getDescription())
+                .build();
     }
 }
