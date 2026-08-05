@@ -64,9 +64,30 @@ public class RedisKeyConstants {
     public static final String SECKILL_ORDER_STATUS_PREFIX = "seckill:order:status:";
 
     /**
+     * 秒杀库存 Key 前缀
+     */
+    public static final String SECKILL_STOCK_PREFIX = "seckill:stock:";
+
+    /**
+     * 秒杀用户购买标记 Key 前缀
+     */
+    public static final String SECKILL_USER_ORDER_PREFIX = "seckill:user:order:";
+
+    /**
+     * 构建秒杀用户购买标记 Key
+     */
+    public static String buildSeckillUserOrderKey(Long activityId, Long goodsId, Long userId) {
+        return SECKILL_USER_ORDER_PREFIX + activityId + ":" + goodsId + ":" + userId;
+    }
+
+
+
+    /**
      * 秒杀订单处理状态过期时间（单位：分钟）
      */
     public static final long SECKILL_ORDER_STATUS_TTL_MINUTES = 30;
+
+
 
 
     /**
@@ -81,6 +102,13 @@ public class RedisKeyConstants {
         long ttlSeconds = Duration.between(LocalDateTime.now(), endTime).getSeconds()
                 + SAFETY_BUFFER_SECONDS;
         return ttlSeconds > 0 ? ttlSeconds : null;
+    }
+
+    /**
+     * 构建秒杀库存 Key
+     */
+    public static String buildSeckillStockKey(Long activityId, Long goodsId) {
+        return SECKILL_STOCK_PREFIX + activityId + ":" + goodsId;
     }
 
 

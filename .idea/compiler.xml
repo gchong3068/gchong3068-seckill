@@ -13,10 +13,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+          <entry name="$PROJECT_DIR$/../../Software/maven/repository/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="gchong3068-seckill-goods" />
         <module name="gchong3068-seckill-user" />
+        <module name="gchong3068-seckill-goods" />
         <module name="gchong3068-seckill-common" />
         <module name="gchong3068-seckill-app" />
         <module name="gchong3068-seckill-order" />
